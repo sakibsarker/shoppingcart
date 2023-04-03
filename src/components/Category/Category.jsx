@@ -9,7 +9,7 @@ const Category = ({categories,status}) => {
   if(status===STATUS.LOADING)return(<Loader/>)
   console.log(categories)
   return (
-    <section className='categories py-5 bg-ghost-white' id='categories'>
+    <section className='categories py-6 bg-ghost-white' id='categories'>
       <div className="container">
         <div className="categories-content">
           <div className="section-title">
