@@ -8,9 +8,9 @@ const categorySlice=createSlice({
         data:[],
         status:STATUS.IDLE,
         catProductAll:[],
-        carProductAllStatus:STATUS.IDLE,
+        catProductAllStatus:STATUS.IDLE,
         catProductSingle:[],
-        carProductSingleStatus:STATUS.IDLE,
+        catProductSingleStatus:STATUS.IDLE,
 
     },
     reducers:{
@@ -24,13 +24,13 @@ const categorySlice=createSlice({
             state.catProductAll.push(aciton.payload);
         },
         setCategoriesStatusAll(state,aciton){
-            state.carProductAllStatus=aciton,payload;
+            state.catProductAllStatus=aciton.payload;
         },
         setCategoriesProductSingle(state,aciton){
             state.catProductAll=aciton.payload;
         },
         setCategoriesStatusSingle(state,aciton){
-            state.carProductSingleStatus=aciton.payload;
+            state.catProductSingleStatus=aciton.payload;
         },
     }
 })
@@ -41,7 +41,7 @@ export const{setCategories,setStatus,setCategoriesProductAll,setCategoriesStatus
 export default categorySlice.reducer;
 
 export const fetchCategories=()=>{
-    return async function fetchCategories(dispatch){
+    return async function fetchCategoriesThunk(dispatch){
         dispatch(setStatus(STATUS.LOADING));
         try{
             const res=await fetch(`${BASE_URL}categories`);

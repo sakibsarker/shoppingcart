@@ -13,7 +13,7 @@ const Category = ({categories,status}) => {
       <div className="container">
         <div className="categories-content">
           <div className="section-title">
-            <h3 className="text-uppercase fw-7 text-regal-blue ls-1">
+            <h3 className="text-uppercase mid fw-7 text-regal-blue ls-1">
               Category
             </h3>
             <div className="category-items grid">

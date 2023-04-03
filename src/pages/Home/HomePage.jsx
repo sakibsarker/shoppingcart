@@ -5,6 +5,7 @@ import ProductList from '../../components/ProductList/ProductList'
 import Category from '../../components/Category/Category'
 import { useSelector,useDispatch } from 'react-redux'
 import { fetchCategories,fetchProductsByCategory } from '../../Store/categorySlice'
+import SingleCategory from '../../components/SingleCategory/SingleCategory'
 const HomePage = () => {
   const dispatch=useDispatch();
   const{data:categories,status:categoryStatus}=useSelector((state)=>state.category)
@@ -20,6 +21,14 @@ const HomePage = () => {
      
       <Slider/>
       <Category categories={categories} status={categoryStatus}/>
+      {
+        <section>
+          {
+            productsByCategory[0]&&<SingleCategory products={productsByCategory[0]} 
+            status={catProductAllStatus}/>
+          }
+        </section>
+      }
     </div>
   )
 }
