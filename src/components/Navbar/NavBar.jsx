@@ -55,7 +55,9 @@ const NavBarPG = () => {
                        {
                         categories.map(category=>(
                             <li key={category.id}>
-                            <Link to={`/categories/${category.id}`} className='nav-link text-white'>{category.name}</Link>
+                            <Link to={`/categories/${category.id}`} className='nav-link text-white'
+                            onClick={()=>setIsSlidebarOpen(false)}
+                            >{category.name}</Link>
                         </li>
                         ))
                        }
