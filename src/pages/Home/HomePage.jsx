@@ -29,6 +29,15 @@ const HomePage = () => {
           }
         </section>
       }
+{/* category two */}
+{
+        <section>
+          {
+            productsByCategory[1]&&<SingleCategory products={productsByCategory[1]} 
+            status={catProductAllStatus}/>
+          }
+        </section>
+      }
     </div>
   )
 }
