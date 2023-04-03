@@ -1,8 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./NavBar.scss"
 import { Link } from 'react-router-dom'
+import { useSelector,useDispatch } from 'react-redux'
+import { fetchCategories } from '../../Store/CategorySlice'
+
 const NavBarPG = () => {
+    const dispatch=useDispatch();
+    const{data:categories}=useSelector((state)=>state.category);
     const [isSlidebarOpen,setIsSlidebarOpen]=useState(false);
+
+
+    useEffect(()=>{
+        dispatch(fetchCategories());
+    },[])
   return (
     <nav className='navbar'>
         <div className='navbar-content'>
@@ -42,9 +52,13 @@ const NavBarPG = () => {
                             <i className='fas fa-times'></i>
 
                         </button>
-                        <li>
-                            <Link to='/' className='nav-link text-white'>Demos</Link>
+                       {
+                        categories.map(category=>(
+                            <li key={category.id}>
+                            <Link to='/' className='nav-link text-white'>{category.name}</Link>
                         </li>
+                        ))
+                       }
 
                     </ul>
                     <button type='button' className='navbar-show-btn text-gold'

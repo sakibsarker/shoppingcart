@@ -7,10 +7,13 @@ import CardPage from './pages/Cart/CardPage'
 import CategoryPage from './pages/CategoryPage/CategoryPage'
 import NavBarPG from './components/Navbar/NavBar'
 import Footer from './components/Footer/Footer'
+import store from './Store/store'
+import { Provider } from 'react-redux'
 
 function App() {
   return (
     <div className="App">
+      <Provider store={store}>
       <BrowserRouter>
       <NavBarPG/>
       <Routes>
@@ -20,6 +23,8 @@ function App() {
       </Routes>
       <Footer/>
       </BrowserRouter>
+      </Provider>
+      
      
     </div>
   )

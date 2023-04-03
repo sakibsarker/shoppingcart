@@ -9,7 +9,8 @@ const categorySlice=createSlice({
         status:STATUS.IDLE,
         catProductAll:[],
         carProductAllStatus:STATUS.IDLE,
-        carProductSingleStatus:STATUS.IDLE
+        catProductSingle:[],
+        carProductSingleStatus:STATUS.IDLE,
 
     },
     reducers:{
@@ -25,7 +26,7 @@ const categorySlice=createSlice({
         setCategoriesStatusAll(state,aciton){
             state.carProductAllStatus=aciton,payload;
         },
-        setCategoriesProductSingle(aciton,payload){
+        setCategoriesProductSingle(state,aciton){
             state.catProductAll=aciton.payload;
         },
         setCategoriesStatusSingle(state,aciton){
@@ -53,4 +54,30 @@ export const fetchCategories=()=>{
 
         }
     }
+}
+
+export const fetchProductsByCategory=(categoryID,dataType)=>{
+    return async function fetchCategoryProductThunk(dispatch){
+        if(dataType==='all')dispatch(setCategoriesStatusAll(STATUS.LOADING));
+        if(dataType==='single')dispatch(setCategoriesStatusSingle(STATUS.LOADING));
+        try{
+           const res=await fetch(`${BASE_URL}categories/${categoryID}/products`);
+           const data=await res.json()
+           if(dataType==='all'){
+            dispatch(setCategoriesProductAll(data.slice(0,10)));
+            dispatch(setCategoriesStatusAll(STATUS.IDLE));
+           }
+           if(dataType==='single'){
+            dispatch(setCategoriesProductSingle(data.slice(0,20)));
+            dispatch(setCategoriesStatusSingle(STATUS.IDLE));
+           }
+
+        }catch(e){
+            if(dataType==='all')dispatch(setCategoriesStatusAll(STATUS.e));
+            if(dataType==='single')dispatch(setCategoriesStatusSingle(STATUS.e));
+
+
+        }
+    }
+
 }
