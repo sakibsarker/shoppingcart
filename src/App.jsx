@@ -18,7 +18,7 @@ function App() {
       <NavBarPG/>
       <Routes>
         <Route path='/' element={<HomePage/>}/>
-        <Route path='/Category/:id' element={<CategoryPage/>}/>
+        <Route path='/categories/:id' element={<CategoryPage/>}/>
         <Route path='/Cart' element={<CardPage/>}/>
       </Routes>
       <Footer/>
