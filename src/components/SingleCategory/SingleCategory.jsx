@@ -6,23 +6,24 @@ import Loader from '../Loader/Loader'
 import { STATUS } from '../../utils/status'
 import { formatPrice } from '../../utils/helper'
 import './SingleCategory.scss'
-import { setIsModelVisible,setModelData } from '../../Store/modalslice'
+import { setIsModalVisible,setModalData } from '../../Store/modalslice'
 
 const SingleCategory = ({products,status}) => {
+    console.log(`single category ${status}`)
     const dispatch=useDispatch();
-    const{isModelVisible}=useSelector((state)=>state.modal)
+    const{isModalVisible}=useSelector((state)=>state.modal)
 
     const viewModalHandler=data=>{
         console.log(data)
-        dispatch(setModelData(data))
-        dispatch(setIsModelVisible(true))
+        dispatch(setModalData(data))
+        dispatch(setIsModalVisible(true))
     }
     if(status===STATUS.ERROR)return(<Error/>)
     if(status===STATUS.LOADING)return(<Loader/>)
   return (
     <section className='cat-single py-5 bg-ghost-white'>
         {
-            isModelVisible&&<SingleProduct/>
+            isModalVisible && <SingleProduct/>
         }
         <div className="container">
             <div className="cat-single-content">

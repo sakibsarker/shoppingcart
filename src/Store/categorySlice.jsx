@@ -46,8 +46,10 @@ export const fetchCategories=()=>{
         try{
             const res=await fetch(`${BASE_URL}categories`);
             const data=await res.json()
+            console.log(`category fetch ${data}`)
             dispatch(setCategories(data.slice(0,5)));
             dispatch(setStatus(STATUS.IDLE))
+            
 
         }catch(e){
             dispatch(setStatus(STATUS.e))
@@ -61,9 +63,11 @@ export const fetchProductsByCategory=(categoryID,dataType)=>{
     return async function fetchCategoryProductThunk(dispatch){
         if(dataType==='all')dispatch(setCategoriesStatusAll(STATUS.LOADING));
         if(dataType==='single')dispatch(setCategoriesStatusSingle(STATUS.LOADING));
+        console.log(`category products ${data}`)
         try{
            const res=await fetch(`${BASE_URL}categories/${categoryID}/products`);
            const data=await res.json()
+           
            if(dataType==='all'){
             dispatch(setCategoriesProductAll(data.slice(0,10)));
             dispatch(setCategoriesStatusAll(STATUS.IDLE));

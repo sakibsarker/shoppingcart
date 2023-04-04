@@ -18,6 +18,7 @@ const HomePage = () => {
   const{data:products,status:productStatus}=useSelector((state)=>state.product)
 
   useEffect(()=>{
+    dispatch(fetchProducts());
     dispatch(fetchCategories());
     dispatch(fetchProductsByCategory(1,'all'));
     dispatch(fetchProductsByCategory(2,'all'));

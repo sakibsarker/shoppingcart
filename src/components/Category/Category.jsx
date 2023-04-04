@@ -7,7 +7,6 @@ import Loader from '../Loader/Loader'
 const Category = ({categories,status}) => {
   if(status===STATUS.Error)return(<Error/>)
   if(status===STATUS.LOADING)return(<Loader/>)
-  console.log(categories)
   return (
     <section className='categories py-6 bg-ghost-white' id='categories'>
       <div className="container">

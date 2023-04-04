@@ -29,7 +29,8 @@ export const fetchProducts=()=>{
             const res=await fetch(`${BASE_URL}products`);
             const data=await res.json();
             dispatch(setProducts(data));
-            dispatch(setStatus(STATUS.LOADING));
+            dispatch(setStatus(STATUS.IDLE));
+            console.log(`product list${data}`)
 
         }catch{
             dispatch(setStatus(STATUS.ERROR))
