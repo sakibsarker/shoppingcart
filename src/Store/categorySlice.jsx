@@ -53,6 +53,7 @@ export const fetchCategories=()=>{
             dispatch(setStatus(STATUS.e))
 
         }
+        
     }
 }
 

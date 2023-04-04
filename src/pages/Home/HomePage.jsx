@@ -4,12 +4,18 @@ import Slider from '../../components/Slider/Slider'
 import ProductList from '../../components/ProductList/ProductList'
 import Category from '../../components/Category/Category'
 import { useSelector,useDispatch } from 'react-redux'
-import { fetchCategories,fetchProductsByCategory } from '../../Store/categorySlice'
+// import { fetchCategories,fetchProductsByCategory } from '../../Store/categorySlice'
+import { fetchCategories,fetchProductsByCategory } from '../../Store/CategorySlice'
 import SingleCategory from '../../components/SingleCategory/SingleCategory'
+import { fetchProducts } from '../../Store/productSlice'
+
+
 const HomePage = () => {
   const dispatch=useDispatch();
   const{data:categories,status:categoryStatus}=useSelector((state)=>state.category)
   const {catProductAll:productsByCategory,catProductAllStatus}=useSelector((state)=>state.category)
+
+  const{data:products,status:productStatus}=useSelector((state)=>state.product)
 
   useEffect(()=>{
     dispatch(fetchCategories());
@@ -21,6 +27,7 @@ const HomePage = () => {
      
       <Slider/>
       <Category categories={categories} status={categoryStatus}/>
+      <ProductList products={products} status={productStatus}/>
       {
         <section>
           {
