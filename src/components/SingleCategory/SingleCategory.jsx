@@ -9,7 +9,7 @@ import './SingleCategory.scss'
 import { setIsModalVisible,setModalData } from '../../Store/modalslice'
 
 const SingleCategory = ({products,status}) => {
-    console.log(`single category ${status}`)
+    
     const dispatch=useDispatch();
     const{isModalVisible}=useSelector((state)=>state.modal)
 
