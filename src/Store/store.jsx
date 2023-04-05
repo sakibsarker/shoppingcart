@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import categoryReducer from "./CategorySlice";
 import modalReducer from './modalslice'
-import productReducer from './productSlice'
+// import productReducer from './productSlice'
+import productSlice from "./productSlice";
 import cartReducer from './cartSlice'
 const store=configureStore({
     reducer:{
         category: categoryReducer,
         modal:modalReducer,
-        product: productReducer,
+        product:productSlice,
+        // product: productReducer,
         cart: cartReducer,
     }
 })
