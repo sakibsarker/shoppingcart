@@ -66,9 +66,7 @@ const CardPage = () => {
               <div className="qty-change flex">
               <button type='button' className='qty-dec fs-14 ' onClick={()=>dispatch(toggleCartQty({id: cartProduct.id, type: "DEC"}))}
               >
-                {
-                  console.log({id: cartProduct.id, type: "DEC"})
-                }
+              
                 <i className='fas fa-minus text-light-blue'></i>
               </button>
               <span className='qty-value flex flex-center'>{cartProduct.quantity}</span>
@@ -76,9 +74,7 @@ const CardPage = () => {
               onClick={()=>dispatch(toggleCartQty({id:cartProduct.id,type:"INC"}))}
 
              >
-              {
-                console.log({id:cartProduct.id,type:"INC"})
-              }
+            
                 <i className='fas fa-plus'></i>
               </button>
 

@@ -24,7 +24,7 @@ const ProductList = ({products,status}) => {
         <div className="product-content">
           <div className="section-title">
             <h3 className="text-uppercase fw-7 text-regal-blue ls-1">
-              Our Products
+            New Arrival
             </h3>
           </div>
           <div className="product-items grid">
