@@ -31,7 +31,7 @@ const CartSlice =createSlice({
             let newQty=item.quantity + action.payload.quantity;
             let newTotalPrice=newQty*item.price;
             return{
-              ...item,quantity:newQty,totalprice:newTotalPrice
+              ...item,quantity:newQty,totalPrice:newTotalPrice
             };
           }
           else{

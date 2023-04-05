@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import './CardPage'
+import './CardPage.scss'
 import { useSelector,useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeFromCart,getCartTotal,clearCart } from '../../Store/cartSlice'
 import { formatPrice } from '../../utils/helper'
 const CardPage = () => {
   const dispatch=useDispatch()
-  const{data:cartProducts,totalItems,totalAmount,deliveryCharge}=useSelector(state=>state.cart);
+  const{data:cartProducts,totalItems,totalAmout,deliveryCharge}=useSelector(state=>state.cart);
   useEffect(()=>{
     dispatch(getCartTotal());
 
@@ -53,7 +53,39 @@ const CardPage = () => {
                           </button>
                         </div>
                         <div className="cart-item-info">
-                          
+                          <h6 className="fs-16 fw-5 text-light-blue">
+                            {cartProduct.title}
+                          </h6>
+                          <div className="qty flex">
+              <span className='text-light-blue qty-text'>Qty:
+               
+              </span>
+              <div className="qty-change flex">
+              <button type='button' className='qty-dec fs-14 text-light-blue'
+              >
+                <i className='fas fa-minus text-light-blue'></i>
+              </button>
+              <span className='qty-value flex flex-center'>{cartProduct.quantity}</span>
+              <button type='button' className='qty-inc fs-14 text-light-blue'
+             >
+                <i className='fas fa-plus'></i>
+              </button>
+
+              </div>
+
+
+            </div>
+            <div className="flex flex-between">
+              <div className="text-pine-green fw-4 fs-15 price">Price: {formatPrice(cartProduct.price)}
+
+              </div>
+              <div className="sub-total fw-6 fs-18 text-regal-blue">
+                <span>Sub Total: </span>
+                <span className=''>{formatPrice(cartProduct.totalPrice)}</span>
+
+              </div>
+
+            </div>
                         </div>
 
                       </div>
@@ -61,6 +93,38 @@ const CardPage = () => {
                   }
 
                   </div>
+                  <button type='button' className='btn-danger'>
+                    <span className='fs-16'>Clear Cart</span>
+                  </button>
+                </div>
+                <div className="cart-right bg-white">
+                  <div className="cart-summary text-light-blue">
+                    <div className="cart-summary-title">
+                      <h6 className="fs-20 fw-5">
+                        Order Summary
+
+                      </h6>
+
+                    </div>
+                    <ul className='cart-summary-info'>
+                      <li className='flex flex-between'>
+                        <span className='fw-4'>Selected {totalItems} items(s) Price</span>
+                        <span className='fw-7'>{formatPrice(totalAmout)}</span>
+                      </li>
+                      <li className='flex flex-between'>
+                        <span className='fw-4'>Discount
+                        <span className='fw-7'>
+                          <span className='fw-5 text-red'>+&nbsp;</span>{formatPrice(0)}
+                        </span>
+
+                        </span>
+
+                      </li>
+
+                    </ul>
+
+                  </div>
+
                 </div>
 
               </div>
