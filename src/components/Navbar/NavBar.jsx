@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import "./NavBar.scss"
 import { Link } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
-import { fetchCategories } from '../../Store/CategorySlice'
+// import { fetchCategories } from '../../Store/CategorySlice'
+import { fetchCategories } from '../../Store/categorySlice'
 import { getCartTotal } from '../../Store/cartSlice'
 const NavBarPG = () => {
     const dispatch=useDispatch();
